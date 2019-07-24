@@ -1,0 +1,14 @@
+<h1>Our products</h1>
+
+<div *ngFor="let product of products">
+    <ul>
+        <li>
+            {{product.name}} 
+
+            <p>
+                <button (click)="displayDetails(product)">Details</button>
+            </p>
+            
+        </li>
+    </ul>
+</div>

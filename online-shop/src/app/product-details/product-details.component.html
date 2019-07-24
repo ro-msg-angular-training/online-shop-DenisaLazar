@@ -1,0 +1,13 @@
+<h1>Product details</h1>
+<div>
+    <h2>Name: {{product.name}}</h2>
+    <h2>Category: {{product.category}}</h2>
+    <h2>Price: {{product.price}}</h2>
+    <h2>Description: {{product.description}}</h2>
+    <img src={{product.image}} alt="The image contains a {{product.name}}" width=300 height=300>
+    <div>
+        <button (click)="send()">Add to cart</button>
+    </div>
+     
+</div>
+
