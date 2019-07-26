@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductDetailsComponent } from '../product-details/product-details.component';
-import { Input } from '@angular/core';
-
-import { Product } from '../product';
-import { CartService } from '../services/cart.service'
-
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Product} from '../models/product';
+import {ProductService} from '../services/product.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CartService} from '../services/cart.service';
 
 @Component({
   selector: 'app-smart-product-details',
@@ -14,17 +12,24 @@ import { CartService } from '../services/cart.service'
 
 export class SmartProductDetailsComponent implements OnInit {
 
-  constructor(private cartService: CartService) { }
+  product: Product;
+
+
+  constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit() {
+    const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    this.productService.getProduct(id).subscribe(product => this.product = product);
   }
-  
 
-  addToCart(product){
+  addToCart(product: Product) {
     this.cartService.addToCart(product);
-    window.alert('Your product has been added to the cart');
   }
 
-
+  removeFromCatalogue(product: Product) {
+    this.productService.removeProduct(product.id);
+    this.router.navigate(['products']);
+  }
 
 }

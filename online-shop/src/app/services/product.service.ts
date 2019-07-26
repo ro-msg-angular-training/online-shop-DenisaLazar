@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-
-import { Product } from '../product';
-import { PRODUCTS } from '../products';
-
+import {Injectable} from '@angular/core';
+import {Observable, of, Subscription} from 'rxjs';
+import {AppConfig} from '../app.config';
+import {Product} from '../models/product';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +10,21 @@ import { PRODUCTS } from '../products';
 
 export class ProductService {
 
-  constructor() { }
+  private static productsUrl = AppConfig.API_ENDPOINT + '/products';
 
-  getAllProducts(): Observable<Product[]>{
-    return of(PRODUCTS);
+  constructor(private httpClient: HttpClient) {
   }
 
-  getProduct(id:number): Observable<Product>{
-      //fetch a product from mock products based on its id
-      return of(PRODUCTS.find(product=>product.id==id));
+  getAllProducts(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(ProductService.productsUrl, AppConfig.BODY);
   }
 
+  getProduct(id: number): Observable<Product> {
+    return this.httpClient.get<Product>(ProductService.productsUrl + '/' + id, AppConfig.BODY);
+  }
+
+  removeProduct(id: number): Subscription {
+    return this.httpClient.delete(ProductService.productsUrl + '/' + id).subscribe();
+  }
 
 }

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Output, EventEmitter } from '@angular/core';
-import { PRODUCTS } from '../products';
-import { Product } from '../product';
+import {Component, OnInit, Input} from '@angular/core';
+import {Output, EventEmitter} from '@angular/core';
+import {Product} from '../models/product';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -12,20 +11,27 @@ import { Product } from '../product';
 
 export class ProductDetailsComponent implements OnInit {
 
-  product;
+  @Input() product: Product;
+  @Output() addToCart = new EventEmitter<Product>();
+  @Output() removeFromCatalogue = new EventEmitter<Product>();
 
-  @Output() p =  new EventEmitter<Product>(); 
-
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit() {
-      let productId = this.route.snapshot.paramMap.get('id');
-      this.product = PRODUCTS.find(x=>x.id==<number><any>productId);
+  constructor(private router: Router) {
   }
 
-  send(){
-    this.p.emit(this.product);
+  ngOnInit() {
+
+  }
+
+  sendProductToAdd() {
+    this.addToCart.emit(this.product);
+  }
+
+  sendProductToDelete() {
+    this.removeFromCatalogue.emit(this.product);
+  }
+
+  redirectToMainPage() {
+    this.router.navigate(['products']);
   }
 
 }
-  

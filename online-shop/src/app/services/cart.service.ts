@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
+import {Product} from '../models/product';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -7,26 +9,31 @@ import { Injectable } from '@angular/core';
 
 export class CartService {
 
-  items = [];
+  items: Product[] = [];
 
-  constructor() { }
+  constructor() {
+  }
 
-  getCartContent(){
+  getCartContent() {
     return this.items;
   }
 
-  addToCart(product){
+  addToCart(product) {
     this.items.push(product);
-    
-  }
-  
-  removeFromCart(product){
-    this.items.splice(this.items.indexOf(product),1); //finds the index of the given parameter and deletes one element starting from that index 
-    return this.items;
   }
 
-  clearCart(){
+  clearCart() {
     this.items = [];
     return this.items;
+  }
+
+  getTotal() {
+    let total = 0;
+
+    for (const i in this.items) {
+      total += this.items[i].price;
+    }
+
+    return total;
   }
 }

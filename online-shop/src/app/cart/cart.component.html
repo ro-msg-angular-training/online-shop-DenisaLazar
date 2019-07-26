@@ -1,0 +1,13 @@
+<h1>Your shopping cart</h1>
+<div *ngFor="let item of cartItems">
+  <p>{{item.name}}</p>
+</div>
+
+<div>
+  <p>TOTAL : {{total|currency}}
+  </p>
+  <button (click)="placeOrder()">Checkout</button>
+  <br>
+  <button (click)="redirectToMainPage()"> Back to products</button>
+
+</div>
