@@ -1,13 +1,11 @@
-<h1>Your shopping cart</h1>
+<h1>Shopping Cart</h1>
 <div *ngFor="let item of cartItems">
-  <p>{{item.name}}</p>
+  <h3>{{item.name}}</h3>
+  <p>Category: {{item.category}}, Price: {{item.price}} RON</p>
 </div>
 
 <div>
-  <p>TOTAL : {{total|currency}}
+  <p>TOTAL : {{total}} RON
   </p>
-  <button (click)="placeOrder()">Checkout</button>
-  <br>
-  <button (click)="redirectToMainPage()"> Back to products</button>
-
+  <button (click)="placeOrder()">CHECKOUT</button>
 </div>

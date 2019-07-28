@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from '../models/product';
 import {ProductService} from '../services/product.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -14,7 +14,7 @@ export class SmartProductDetailsComponent implements OnInit {
 
   product: Product;
 
-
+  // tslint:disable-next-line:max-line-length
   constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute, private router: Router) {
   }
 
@@ -29,7 +29,10 @@ export class SmartProductDetailsComponent implements OnInit {
 
   removeFromCatalogue(product: Product) {
     this.productService.removeProduct(product.id);
+    window.alert('The product has been removed from the catalogue');
     this.router.navigate(['products']);
   }
+
+
 
 }

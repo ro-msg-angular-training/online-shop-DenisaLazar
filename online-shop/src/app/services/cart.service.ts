@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 
 import {Product} from '../models/product';
-import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +29,10 @@ export class CartService {
   getTotal() {
     let total = 0;
 
+    // tslint:disable-next-line:forin
     for (const i in this.items) {
       total += this.items[i].price;
     }
-
     return total;
   }
 }

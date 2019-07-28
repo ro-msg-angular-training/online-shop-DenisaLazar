@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CartService} from '../services/cart.service';
 import {Product} from '../models/product';
 import {OrderService} from '../services/order.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -24,11 +24,15 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder() {
-    return this.orderService.placeOrder();
+    if (this.total === 0) {
+      window.alert('Your order is empty');
+    } else {
+      return this.orderService.placeOrder();
+    }
   }
 
-  redirectToMainPage() {
-    this.router.navigate(['products']);
+  clearCart() {
+    return this.cartService.clearCart();
   }
 
 }

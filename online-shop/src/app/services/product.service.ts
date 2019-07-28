@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable, of, Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {AppConfig} from '../app.config';
 import {Product} from '../models/product';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,14 @@ export class ProductService {
 
   removeProduct(id: number): Subscription {
     return this.httpClient.delete(ProductService.productsUrl + '/' + id).subscribe();
+  }
+
+  updateProduct(id: number, product: Product): Subscription {
+    return this.httpClient.put<Product>(ProductService.productsUrl + '/' + id, product, AppConfig.BODY).subscribe();
+  }
+
+  createNewProduct(product: Product): Subscription {
+    return this.httpClient.post<Product>(ProductService.productsUrl, product, AppConfig.BODY).subscribe();
   }
 
 }

@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../models/product';
-
-import {Router} from '@angular/router';
 import {ProductService} from '../services/product.service';
 
 @Component({
@@ -23,10 +21,17 @@ export class ProductListComponent implements OnInit {
   }
 
   displayDetails(product: Product) {
-    // tslint:disable-next-line:no-unused-expression
-    this.router.navigate(['products', product.id]), {relativeTo: this.route};
+    this.router.navigate(['products', product.id]);
   }
 
+  addNewProduct() {
+    this.router.navigate(['create-product'], {});
+  }
+
+
+  goToCart() {
+    this.router.navigate(['cart']);
+  }
 
 
 }

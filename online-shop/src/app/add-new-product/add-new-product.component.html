@@ -1,0 +1,37 @@
+<h1>Add a new product</h1>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="addForm">
+  <label>
+    Id:
+    <input class="form-control" formControlName="id" type="text">
+  </label><br><br>
+
+  <label>
+    Name:
+    <input class="form-control" formControlName="name" type="text">
+  </label><br><br>
+
+  <label>
+    Category:
+    <input class="form-control" formControlName="category" type="text">
+  </label><br><br>
+
+  <label>
+    Image:
+    <input class="form-control" formControlName="image" type="text">
+  </label><br><br>
+
+  <label>
+    Price:
+    <input class="form-control" formControlName="price" type="text">
+  </label><br><br>
+
+  <label>
+    <input class="form-control" formControlName="description" type="text">
+  </label><br><br>
+
+  <button class="button1" type="submit">Add product</button>
+  <button (click)="cancel()" class="button2">Cancel</button>
+</form>
+
+

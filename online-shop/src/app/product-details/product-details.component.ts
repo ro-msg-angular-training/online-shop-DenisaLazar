@@ -1,6 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../models/product';
+import {Location} from '@angular/common';
 import {Router} from '@angular/router';
 
 @Component({
@@ -14,24 +14,28 @@ export class ProductDetailsComponent implements OnInit {
   @Input() product: Product;
   @Output() addToCart = new EventEmitter<Product>();
   @Output() removeFromCatalogue = new EventEmitter<Product>();
+  @Output() edit = new EventEmitter<Product>();
 
-  constructor(private router: Router) {
+  constructor(private location: Location, private router: Router) {
   }
 
   ngOnInit() {
 
   }
 
-  sendProductToAdd() {
+  addProductToCart() {
     this.addToCart.emit(this.product);
   }
 
-  sendProductToDelete() {
+  deleteProduct() {
     this.removeFromCatalogue.emit(this.product);
   }
 
-  redirectToMainPage() {
-    this.router.navigate(['products']);
+  editProduct() {
+    this.router.navigate(['edit/' + this.product.id], {});
   }
 
+  redirectToMainPage() {
+    this.location.back();
+  }
 }

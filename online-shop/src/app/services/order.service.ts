@@ -5,6 +5,7 @@ import {AppConfig} from '../app.config';
 import {Product} from '../models/product';
 import {CartService} from './cart.service';
 import {Order} from '../models/order';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,14 @@ export class OrderService {
 
   content: Product[] = [];
 
-  constructor(private httpClient: HttpClient, private cartService: CartService) {
+  constructor(private httpClient: HttpClient, private cartService: CartService, private router: Router) {
   }
 
 
   getOrderContents(): Product[] {
     return this.cartService.getCartContent();
   }
+
 
   placeOrder(): Observable<{}> {
 
@@ -45,6 +47,8 @@ export class OrderService {
     }
 
     order.setProducts(orderContent);
+
+    this.cartService.clearCart();
 
     return this.httpClient.post(OrderService.ordersUrl, order, AppConfig.BODY);
   }

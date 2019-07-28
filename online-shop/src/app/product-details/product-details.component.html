@@ -1,17 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
 <h1> Product details </h1>
 <div *ngIf="product">
   <h2>Name: {{product.name}} </h2>
   <h2>Category: {{product.category}} </h2>
-  <h2>Price: {{product.price|currency}} </h2>
+  <h2>Price: {{product.price}} RON </h2>
+  <img alt="The image contains a {{product.name}}" src={{product.image}}>
   <h2> Description: {{product.description}}</h2>
-  <img src={{product.image}} alt="The image contains a {{product.name}}" width=300 height=300>
-  <div>
-    <button (click)="sendProductToAdd()">Add to cart</button>
-    <br>
-    <button (click)="sendProductToDelete()">Delete from catalogue</button>
-    <br>
-    <button (click)="redirectToMainPage()">Back to products</button>
-  </div>
+
+
 </div>
+
+<div>
+  <button (click)="addProductToCart()" class="button1">Add to cart</button>
+  <button (click)="deleteProduct()" class="button2">Delete product</button>
+  <button (click)="redirectToMainPage()" class="button3">Back</button>
+  <button (click)="editProduct()" class="button4">Edit</button>
+</div>
+
+</body>
+</html>
+
 
 
