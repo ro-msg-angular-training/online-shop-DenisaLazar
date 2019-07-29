@@ -1,0 +1,53 @@
+h1 {
+  font-size: 30px;
+}
+
+ul {
+  font-size: 25px;
+}
+
+.button1 {
+  background-color: #E6E6FA;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+.button2 {
+  background-color: #E6E6FA;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  margin-left: 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+button {
+  background-color: #E6E6FA;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+
+
+
+button:hover {
+  color: white;
+  background-color: darkcyan;
+}
+

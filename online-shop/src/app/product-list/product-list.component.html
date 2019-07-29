@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Online Shop</title>
+</head>
+
+<body>
+<div>
+  <button class="button1"(click)="goToCart()" style="float: right">Cart</button>
+  <button class="button2"(click)="addNewProduct()" style="float: right">Add</button>
+  <h1>Products</h1>
+</div>
+
+<div *ngFor="let product of products">
+  <ul>
+    <li>
+
+      {{product.name}}
+
+      <p>
+        <button (click)="displayDetails(product)">Details</button>
+      </p>
+
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>
+
+

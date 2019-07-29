@@ -1,0 +1,33 @@
+.button1 {
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 30%;
+  background-color: #E6E6FA;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  alignment: bottom;
+  border-radius: 12px;
+}
+
+.button2 {
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 50%;
+  background-color: #E6E6FA;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  alignment: bottom;
+  border-radius: 12px;
+}
+
+
+button:hover {
+  color: white;
+  background-color: darkcyan;
+}
